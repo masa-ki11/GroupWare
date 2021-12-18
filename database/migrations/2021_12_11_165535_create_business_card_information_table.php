@@ -15,6 +15,12 @@ class CreateBusinessCardInformationTable extends Migration
     {
         Schema::create('business_card_information', function (Blueprint $table) {
             $table->id();
+            $table->string('customer');
+            $table->string('name');
+            $table->string('tel');
+            $table->string('fax');
+            $table->string('address');
+            $table->string('mail');
             $table->timestamps();
         });
     }

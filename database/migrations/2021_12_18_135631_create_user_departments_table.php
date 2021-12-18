@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChatsTable extends Migration
+class CreateUserDepartmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,25 +13,20 @@ class CreateChatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('chats', function (Blueprint $table) {
+        Schema::create('user_departments', function (Blueprint $table) {
             $table->id();
-            
-            $table->text('message');
-            $table->string('image');
             $table->timestamps();
 
             // $table->foreign('user_id')
             // ->references('id')
             // ->on('users')
             // ->onDelete('cascade');
-            // $table->foreign('child_group_id')
+            // $table->foreign('department_id')
             // ->references('id')
-            // ->on('child_groups')
+            // ->on('departments')
             // ->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            // $table->foreignId('child_group_id')->constrained('child_groups')->onDelete('cascade');
-
-
+            $table->foreignId('department_id')->constrained('departments')->onDelete('cascade');
         });
     }
 
@@ -42,6 +37,6 @@ class CreateChatsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chats');
+        Schema::dropIfExists('user_departments');
     }
 }

@@ -15,7 +15,21 @@ class CreateWorkFlowsTable extends Migration
     {
         Schema::create('work_flows', function (Blueprint $table) {
             $table->id();
+            // $table->integer('user_id');
+            // $table->integer('status_id');
+            $table->text('comment');
             $table->timestamps();
+
+            // $table->foreign('user_id')
+            // ->references('id')
+            // ->on('users')
+            // ->onDelete('cascade');
+            // $table->foreign('status_id')
+            // ->references('id')
+            // ->on('statuses')
+            // ->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            
         });
     }
 

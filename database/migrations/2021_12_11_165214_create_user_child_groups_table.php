@@ -15,7 +15,20 @@ class CreateUserChildGroupsTable extends Migration
     {
         Schema::create('user_child_groups', function (Blueprint $table) {
             $table->id();
+            // $table->integer('user_id');
+            // $table->integer('child_group_id');
             $table->timestamps();
+
+            // $table->foreign('user_id')
+            // ->references('id')
+            // ->on('users')
+            // ->onDelete('cascade');
+            // $table->foreign('child_group_id')
+            // ->references('id')
+            // ->on('child_groups')
+            // ->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('child_group_id')->constrained('child_groups')->onDelete('cascade');
         });
     }
 
