@@ -15,3 +15,6 @@ use App\Http\Controllers\TimeClockController;
 */
 
 Route::get('/', [TimeClockController::class, 'index']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
