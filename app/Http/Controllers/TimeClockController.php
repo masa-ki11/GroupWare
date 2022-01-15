@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTimeClockRequest;
 use App\Http\Requests\UpdateTimeClockRequest;
 use App\Models\TimeClock;
-
+use Illuminate\Support\Facades\DB;
+use Request;
+use App\Models\User;
 class TimeClockController extends Controller
 {
     /**
@@ -16,6 +18,9 @@ class TimeClockController extends Controller
     public function index()
     {
         //
+        $data = User::find(1)->timeclocks()->get();
+        dd($data);
+        return view("index", compact('data'));
     }
 
     /**
